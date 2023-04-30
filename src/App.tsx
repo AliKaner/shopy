@@ -1,8 +1,11 @@
-import React from 'react';
+import ListPage from "./pages/list";
+
+
 function App() {
   return (
-    <div className="App">
-    </div>
+    <>
+    <ListPage/>
+    </>
   );
 }
 
