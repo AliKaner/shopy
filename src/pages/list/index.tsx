@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { IProduct } from "../../api/models/IProduct";
-import { getProducts } from "../../api/routes/products";
+import { SortOption, getProducts } from "../../api/routes/products";
 import { Layout } from "../../components/Layout";
 import ProductCard from "../../components/ProductCard";
 import { Box, Grid, Pagination } from "@mui/material";
@@ -10,10 +10,12 @@ import ProductPagination from "../../components/Pagination";
 
 export default function ListPage() {
   const [products, setProducts] = useState<IProduct[]>([]);
+  const [page,setPage] = useState<number>(1);
+  const [sort, setSort] = useState<SortOption>("-createdAt");
 
   const getAllProducts = async () => {
     try {
-      const allProducts = await getProducts();
+      const allProducts = await getProducts(page,sort);
       setProducts(allProducts);
     } catch (error) {
       console.log(error);
@@ -45,6 +47,7 @@ export default function ListPage() {
                 </Grid>
               ))}
             </Grid>
+            
             <Pagination />
           </Box>
         </Box>

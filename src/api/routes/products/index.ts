@@ -56,7 +56,7 @@ export const buildUrl = (
     url.searchParams.append("sortBy", sortOption);
   }
   
-  url.searchParams.append("per_page", "12");
+  url.searchParams.append("limit", "12");
   url.searchParams.append("page", pageParam.toString());
 
   return url;

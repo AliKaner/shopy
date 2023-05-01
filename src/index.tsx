@@ -5,6 +5,8 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import DetailPage from "./pages/detail";
 import ListPage from "./pages/list";
 import { DetailProvider } from "./contexts/detail";
+import './index.css';
+
 const router = createBrowserRouter([
   {
     path: "detail",

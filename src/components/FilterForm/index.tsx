@@ -24,15 +24,16 @@ const FilterForm: FC<IFilterForm> = ({ title,filter }) => {
 
   const { Apple, Samsung, Huawei } = state;
   return (
-    <Box sx={{ width: "250px", height: "200px", margin:"30px"}}>
+    <Box sx={{ width: "250px", height: "200px", margin:"30px 30px 0px 30px",}}>
       <FormControl>
         <FormLabel sx={{color:"grey"}} component="legend">{title}</FormLabel>
       </FormControl>
       <FormGroup 
         sx={{
+          backgroundColor:"#FFFFFF",
           padding:"10px",
-          boxShadow:
-            "1px 0px 1px -1px rgba(0, 0, 0, 0.4), -1px 0px 1px -1px rgba(0, 0, 0, 0.4), 0px 4px 4px -2px rgba(0, 0, 0, 0.4)",
+          boxShadow:"1px 0px 1px -1px rgba(0, 0, 0, 0.4), -1px 0px 1px -1px rgba(0, 0, 0, 0.4), 0px 4px 4px -2px rgba(0, 0, 0, 0.4)",
+          overflow: "auto",
         }}
       >
         <TextField

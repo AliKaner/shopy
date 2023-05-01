@@ -15,8 +15,9 @@ const Cart: FC<ICart> = () => {
     <Box
       sx={{
         width: "250px",
-        boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-        margin: "40px",
+        backgroundColor:"#FFFFFF",
+        boxShadow:"1px 0px 1px -1px rgba(0, 0, 0, 0.4), -1px 0px 1px -1px rgba(0, 0, 0, 0.4), 0px 4px 4px -2px rgba(0, 0, 0, 0.4)",
+        marginLeft: "40px",
         justifyContent: "center",
       }}
     >

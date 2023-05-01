@@ -19,11 +19,9 @@ const ProductCard: FC<IProductCard> = ({ product }) => {
 
   return (
     <Card
-      sx={{ padding: "10px", marginTop: "20px", height: "400px" }}
-      square={true}
+      sx={{ padding: "10px", margin:"5px",height: "320px", borderRadius:"0" }}
     >
       <Box
-        onClick={onCardClickHandle}
         sx={{
           display: "flex",
           flexDirection: "column",
@@ -31,25 +29,30 @@ const ProductCard: FC<IProductCard> = ({ product }) => {
           height: "100%",
         }}
       >
-        <Box>
+        <Box onClick={onCardClickHandle}>
           <CardMedia
             component="img"
-            sx={{ width: "220px", height: "220px" }}
+            sx={{ width: "180px", height: "180px",  margin:"auto"}}
             image={product.image}
             alt={product.name}
           />
-            <Typography
-              gutterBottom
-              variant="subtitle1"
-              sx={{ color: "#6587FE" }}
-              component="div"
-              align="left"
-            >
-              {product.price} ₺
-            </Typography>
-            <Typography variant="subtitle1" color="bold" align="left" sx={{margin:0}}>
-              {product.name}
-            </Typography>
+          <Typography
+            gutterBottom
+            variant="subtitle1"
+            sx={{ color: "#6587FE" }}
+            component="div"
+            align="left"
+          >
+            {product.price} ₺
+          </Typography>
+          <Typography
+            variant="subtitle1"
+            color="bold"
+            align="left"
+            sx={{ margin: 0 }}
+          >
+            {product.name}
+          </Typography>
         </Box>
         <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
           <Button
