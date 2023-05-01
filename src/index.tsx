@@ -5,11 +5,15 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import DetailPage from "./pages/detail";
 import ListPage from "./pages/list";
 import { DetailProvider } from "./contexts/detail";
-
 const router = createBrowserRouter([
   {
-    path: "/detail",
-    element: <DetailPage />,
+    path: "detail",
+    children:[
+      {
+        path:":id",
+        element: <DetailPage />,
+      }
+    ],
   },
   {
     path: "list",

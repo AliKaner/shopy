@@ -12,58 +12,77 @@ const Cart: FC<ICart> = () => {
   const { removeItemFromCart } = useCart();
   const { cartItems } = useCart();
   return (
-    <Box>
+    <Box
+      sx={{
+        width: "250px",
+        boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+        margin: "40px",
+        justifyContent: "center",
+      }}
+    >
       {cartItems.map((cartItem) => (
-        <Box sx={{ display: "flex", flexDirection: "row" }}>
+        <Box
+          key={cartItem.id}
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            height: "50px",
+            justifyContent: "space-between",
+            margin: "5px",
+            paddingBottom: "5px",
+            alignItems: "center",
+          }}
+        >
           <Box sx={{ flex: 1 }}>
             <Typography
               variant="subtitle1"
-              color="text.secondary"
+              color="black"
               component="div"
+              margin="0"
             >
               {cartItem.product?.name}
             </Typography>
-            <Typography
-              variant="subtitle1"
-              color="text.secondary"
-              component="div"
-            >
+            <Typography variant="subtitle1" color="#4F76FE" component="div">
               {cartItem.product?.price}
             </Typography>
           </Box>
-          <div style={{ display: "flex", flexDirection: "row", flex: 1 }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
             <IconButton
               sx={{ flex: 1 }}
-              color="primary"
               aria-label="upload picture"
               component="label"
               onClick={() => removeItemFromCart(cartItem.product.id)}
             >
-              <input hidden accept="image/*" type="file" />
-              <RemoveIcon />
+              <RemoveIcon color="action" />
             </IconButton>
             <Box
               color="primary"
               sx={{
-                width: 50,
-                height: 50,
-                textAlign: "center",
-                backgroundColor: "primary.dark",
+                backgroundColor: "#2A59FE",
                 color: "white",
-                flex: 1,
+                width: "40px",
+                height: "40px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                margin: "5px",
               }}
             >
-              {cartItem.quantity}
+              <Typography>{cartItem.quantity}</Typography>
             </Box>
             <IconButton
               sx={{ flex: 1 }}
-              color="primary"
               aria-label="upload picture"
               component="label"
               onClick={() => addItemToCart(cartItem.product)}
             >
-              <input hidden accept="image/*" type="file" />
-              <AddIcon />
+              <AddIcon color="action" />
             </IconButton>
           </div>
         </Box>

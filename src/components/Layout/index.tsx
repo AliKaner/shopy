@@ -9,9 +9,9 @@ export const Layout: FC<ILayout> = ({ children }) => {
   return (
     <Box sx={{display:"flex",flexDirection:"column"}}>
       <Header title="eteration" />
-      <Box sx={{display:"flex",flexDirection:"row"}}>
-        <Box>{children}</Box>
-        <Box>
+      <Box sx={{display:"flex",flexDirection:"row" }}>
+        <Box sx={{flex:3}}>{children}</Box>
+        <Box sx={{ display: "flex", flexDirection:"column", alignContent:"flex-start", flex:1, flexFlow:"column wrap" }}>
           <Cart/>
           <Checkout />
         </Box>

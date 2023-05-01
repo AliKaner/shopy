@@ -1,8 +1,9 @@
 import { IProduct } from "../../models/IProduct";
+import { API_ROOT } from "../../../shared/constants";
 
-type SortOption = "price" | "-price" | "createdAt" | "-createdAt";
+export type SortOption = "price" | "-price" | "createdAt" | "-createdAt";
 
-interface FilterOption {
+export interface FilterOption {
   brand?: string[];
   model?: string[];
 }
@@ -18,30 +19,47 @@ export const getProducts = async (
   return await res.json();
 };
 
+export const getProductById = async (id: string): Promise<IProduct> => {
+  const url = `${API_ROOT}/${id}`;
 
-const buildUrl = (
-    pageParam: number,
-    sortOption?: SortOption,
-    filterOption?: FilterOption
-  ): URL => {
-    const url = new URL("https://5fc9346b2af77700165ae514.mockapi.io/products");
+  const res = await fetch(url);
+  return await res.json();
+};
+
+export const getFiltersSet = async (filter:string): Promise<string[]> => {
+  const url = API_ROOT;
+  const res = await fetch(url);
+  const products = await res.json();
+  const models = products.map((product: { filter: string; }) => filter);
+  return models;
+};
+
+
+export const buildUrl = (
+  pageParam: number,
+  sortOption?: SortOption,
+  filterOption?: FilterOption,
+): URL => {
+  const url = new URL(API_ROOT);
+
+  if (filterOption && filterOption.brand?.length) {
+    const brandFilters = filterOption.brand.join("|");
+    url.searchParams.append("brand", brandFilters);
+  }
+
+  if (filterOption && filterOption.model?.length) {
+    const modelFilters = filterOption.model.join("|");
+    url.searchParams.append("model", modelFilters);
+  }
+
+  if (sortOption) {
+    url.searchParams.append("sortBy", sortOption);
+  }
   
-    if (filterOption && filterOption.brand?.length) {
-      const brandFilters = filterOption.brand.join("|");
-      url.searchParams.append("brand", brandFilters);
-    }
-  
-    if (filterOption && filterOption.model?.length) {
-      const modelFilters = filterOption.model.join("|");
-      url.searchParams.append("model", modelFilters);
-    }
-  
-    if (sortOption) {
-      url.searchParams.append("sortBy", sortOption);
-    }
-  
-    url.searchParams.append("per_page", "12");
-    url.searchParams.append("page", pageParam.toString());
-  
-    return url;
-  };
+  url.searchParams.append("per_page", "12");
+  url.searchParams.append("page", pageParam.toString());
+
+  return url;
+};
+
+

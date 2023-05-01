@@ -7,7 +7,13 @@ const Checkout = () => {
   const { calculateTotalPrice } = useCart();
   const { emptyCart } = useCart();
   return (
-    <Box>
+    <Box sx={{
+      width: "250px",
+      boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+      justifyContent: "center",
+      margin:"40px"
+    }}>
+      <Box sx={{display:"flex", flexDirection:"row",padding:"10px 10px 0 10px"}}>
       <Typography
         variant="h6"
         noWrap
@@ -19,21 +25,23 @@ const Checkout = () => {
       <Typography
         gutterBottom
         variant="h6"
-        color="blue"
+        sx={{color:"#486FFE", fontWeight:"bold"}}
         component="div"
         align="left"
       >
-        {calculateTotalPrice()}
+        {`${(calculateTotalPrice())}₺`}
       </Typography>
-
+      </Box>
+      <Box sx={{display:"flex", flexDirection:"row",padding:"10px"}}>
       <Button
         size="large"
-        color="primary"
+        sx={{backgroundColor:"#2A59FE",width:"100%", }}
         variant="contained"
         onClick={() => emptyCart()}
       >
         Checkout
       </Button>
+      </Box>
     </Box>
   );
 };

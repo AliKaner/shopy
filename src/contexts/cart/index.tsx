@@ -41,21 +41,24 @@ export const CartProvider: FC<ICartProvider> = ({ children }) => {
     setCartItems(newCartItems);
   };
 
-  const addItemToCart = useCallback((product: IProduct) => {
-    const existingItem = cartItems.find(
-      (cartItem) => cartItem.product.id === product.id
-    );
+  const addItemToCart = useCallback(
+    (product: IProduct) => {
+      const existingItem = cartItems.find(
+        (cartItem) => cartItem.product.id === product.id
+      );
 
-    const newCartItems = existingItem
-      ? cartItems.map((cartItem) => {
-          if (existingItem.id === cartItem.id) {
-            return { ...cartItem, quantity: cartItem.quantity + 1 };
-          }
-          return cartItem;
-        })
-      : [...cartItems, { product, quantity: 1, id: "1" }];
-    bulkUpdateCartItems(newCartItems);
-  }, [cartItems]);
+      const newCartItems = existingItem
+        ? cartItems.map((cartItem) => {
+            if (existingItem.id === cartItem.id) {
+              return { ...cartItem, quantity: cartItem.quantity + 1 };
+            }
+            return cartItem;
+          })
+        : [...cartItems, { product, quantity: 1, id: product.id }];
+      bulkUpdateCartItems(newCartItems);
+    },
+    [cartItems]
+  );
 
   const calculateTotalPrice = useCallback(() => {
     return cartItems.reduce((total, cartItem) => {
@@ -68,25 +71,29 @@ export const CartProvider: FC<ICartProvider> = ({ children }) => {
     bulkUpdateCartItems([]);
   }, []);
 
-  const removeItemFromCart = useCallback((productId: string) => {
-    const itemQuantity = cartItems.find(
-      (cartItem) => cartItem.product.id === productId
-    )?.quantity;
+  const removeItemFromCart = useCallback(
+    (productId: string) => {
+      const itemQuantity = cartItems.find(
+        (cartItem) => cartItem.product.id === productId
+      )?.quantity;
 
-    if (itemQuantity === 1) {
-      return setCartItems((prevCartItems) =>
-        prevCartItems.filter((cartItem) => cartItem.product.id !== productId)
+      if (itemQuantity === 1) {
+        const newItems = cartItems.filter(
+          (cartItem) => cartItem.product.id !== productId
+        );
+        bulkUpdateCartItems(newItems);
+      }
+
+      setCartItems((prevCartItems) =>
+        prevCartItems.map((cartItem) =>
+          cartItem.product.id === productId
+            ? { ...cartItem, quantity: cartItem.quantity - 1 }
+            : cartItem
+        )
       );
-    }
-
-    setCartItems((prevCartItems) =>
-      prevCartItems.map((cartItem) =>
-        cartItem.product.id === productId
-          ? { ...cartItem, quantity: cartItem.quantity - 1 }
-          : cartItem
-      )
-    );
-  }, [cartItems]);
+    },
+    [cartItems]
+  );
 
   return (
     <CartContext.Provider
