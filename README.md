@@ -1,6 +1,6 @@
-#Eteration Case study
+# Eteration Case study
 
-## How to run
+# How to run#
 
  ```
  // Install dependencies
@@ -11,9 +11,9 @@ npm start
 
 // Have fun 🚀
 ```
+## Demo
 
-
-Open [http://localhost:3000/list](http://localhost:3000/list) to view the list page
+https://eterationcaseali.netlify.app/
 
 ## Screenshots
 

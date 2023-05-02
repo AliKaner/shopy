@@ -18,7 +18,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "list",
+    path: "/",
     element: <ListPage />,
   },
 ]);
