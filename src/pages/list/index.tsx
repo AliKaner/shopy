@@ -40,7 +40,6 @@ export default function ListPage() {
     search: searchText,
   });
 
-
   const { cacheIsLoading, models, brands } = useCacheProducts();
 
   const onPaginationClickHandle = (
@@ -128,10 +127,12 @@ export default function ListPage() {
                     </Grid>
                   ))}
             </Grid>
-            <ProductPagination
-              count={totalPagesCount}
-              onChange={onPaginationClickHandle}
-            />
+            <Box sx={{ display: "flex", justifyContent: "center" }}>
+              <ProductPagination
+                count={totalPagesCount}
+                onChange={onPaginationClickHandle}
+              />
+            </Box>
           </Box>
         </Box>
       </>
