@@ -9,20 +9,26 @@ const DetailedProductCard: FC<IDetailedProductCard> = ({ product }) => {
     <Card
       sx={{
         display: "flex",
-        flexDirection: "row",
-        marginTop: "60px",
-        boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1), 0px 2px 4px rgba(0, 0, 0, 0.1)",
+        boxShadow:
+          "0px 4px 6px rgba(0, 0, 0, 0.1), 0px 2px 4px rgba(0, 0, 0, 0.1)",
+        marginLeft: "120px ",
+        flexDirection: { xs: "column", md: "column", lg: "row" },
       }}
     >
       <Box sx={{ flex: 1 }}>
-        <CardMedia component="img" image={product.image} alt={product.name} />
+        <CardMedia
+          component="img"
+          image={product.image}
+          alt={product.name}
+          sx={{ margin: "10px 10px 0 10px" }}
+        />
       </Box>
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
           flex: 1,
-          marginLeft: "20px",
+          marginLeft: { lg: "20px", xs: "0px" },
         }}
       >
         <Box>

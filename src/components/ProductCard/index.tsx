@@ -19,7 +19,12 @@ const ProductCard: FC<IProductCard> = ({ product }) => {
 
   return (
     <Card
-      sx={{ padding: "10px", margin:"5px",height: "320px", borderRadius:"0" }}
+      sx={{
+        padding: "10px",
+        margin: "5px",
+        height: "320px",
+        borderRadius: "0",
+      }}
     >
       <Box
         sx={{
@@ -32,12 +37,11 @@ const ProductCard: FC<IProductCard> = ({ product }) => {
         <Box onClick={onCardClickHandle}>
           <CardMedia
             component="img"
-            sx={{ width: "180px", height: "180px",  margin:"auto"}}
+            sx={{ width: "180px", height: "180px", margin: "auto" }}
             image={product.image}
             alt={product.name}
           />
           <Typography
-            gutterBottom
             variant="subtitle1"
             sx={{ color: "#6587FE" }}
             component="div"

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { IHeader } from "./header.type";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -7,15 +7,16 @@ import Person2Icon from "@mui/icons-material/Person2";
 import WorkIcon from "@mui/icons-material/Work";
 import { useCart } from "../../contexts/cart";
 import { useNavigate } from "react-router";
+import SearchIcon from "@mui/icons-material/Search";
+import { TextField } from "@mui/material";
 
-export const Header: FC<IHeader> = ({ title }) => {
+export const Header: FC<IHeader> = ({ title, onChange }) => {
   const { calculateTotalPrice } = useCart();
-
   return (
     <Box
       sx={{
         backgroundColor: "#2a59fe",
-        width:"100%",
+        width: "100%",
         display: "flex",
         alignItems: "center",
         justifyContent: "flex-start",
@@ -35,11 +36,22 @@ export const Header: FC<IHeader> = ({ title }) => {
               noWrap
               align="center"
               component="div"
-              sx={{ flex: 1,fontWeight: 'bold' }}
+              sx={{ flex: 1, fontWeight: "bold" }}
             >
               {title}
             </Typography>
-            <input style={{ flex: 1}} />
+            <TextField
+              sx={{ flex: 1, backgroundColor: "white", margin: "5px" }}
+              placeholder="Search"
+              name="search"
+              onChange={onChange}
+              variant="standard"
+              id="Search"
+              InputProps={{
+                startAdornment: <SearchIcon sx={{ color: "grey" }} />,
+                disableUnderline: true,
+              }}
+            />
             <Box
               sx={{
                 flex: 1,
@@ -47,7 +59,7 @@ export const Header: FC<IHeader> = ({ title }) => {
             ></Box>
             <Box
               sx={{
-                flex:1,
+                flex: 1,
                 display: "flex",
                 flexDirection: "row",
                 gap: "20px",
@@ -63,7 +75,7 @@ export const Header: FC<IHeader> = ({ title }) => {
                   display: "flex",
                   alignItems: "center",
                   gap: "10px",
-                  fontWeight: 'light'
+                  fontWeight: "light",
                 }}
               >
                 <WorkIcon />
@@ -77,7 +89,7 @@ export const Header: FC<IHeader> = ({ title }) => {
                   display: "flex",
                   alignItems: "center",
                   gap: "5px",
-                  fontWeight: 'light',
+                  fontWeight: "light",
                   flex: 1,
                 }}
               >

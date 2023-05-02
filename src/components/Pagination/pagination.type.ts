@@ -1,4 +1,4 @@
 export interface IPagination {
-    count:number;
-    onClick: () => void;
+  count: number;
+  onChange: (e: React.ChangeEvent<unknown>, page: number) => void;
 }

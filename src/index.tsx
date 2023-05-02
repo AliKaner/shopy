@@ -4,17 +4,17 @@ import { CartProvider } from "./contexts/cart";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import DetailPage from "./pages/detail";
 import ListPage from "./pages/list";
-import { DetailProvider } from "./contexts/detail";
-import './index.css';
+import "./index.css";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const router = createBrowserRouter([
   {
     path: "detail",
-    children:[
+    children: [
       {
-        path:":id",
+        path: ":id",
         element: <DetailPage />,
-      }
+      },
     ],
   },
   {
@@ -23,12 +23,14 @@ const router = createBrowserRouter([
   },
 ]);
 
+const queryClient = new QueryClient();
+
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <DetailProvider>
-    <CartProvider>
+  <CartProvider>
+    <QueryClientProvider client={queryClient}>
       <React.StrictMode>
         <RouterProvider router={router} />
       </React.StrictMode>
-    </CartProvider>
-  </DetailProvider>
+    </QueryClientProvider>
+  </CartProvider>
 );

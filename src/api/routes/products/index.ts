@@ -9,11 +9,12 @@ export interface FilterOption {
 }
 
 export const getProducts = async (
-  pageParam: number = 1,
+  pageParam?: number,
   sortOption?: SortOption,
-  filterOption?: FilterOption
+  filterOption?: FilterOption,
+  search?: string
 ): Promise<IProduct[]> => {
-  const url = buildUrl(pageParam, sortOption, filterOption);
+  const url = buildUrl(pageParam, sortOption, filterOption, search);
 
   const res = await fetch(url.href);
   return await res.json();
@@ -26,19 +27,11 @@ export const getProductById = async (id: string): Promise<IProduct> => {
   return await res.json();
 };
 
-export const getFiltersSet = async (filter:string): Promise<string[]> => {
-  const url = API_ROOT;
-  const res = await fetch(url);
-  const products = await res.json();
-  const models = products.map((product: { filter: string; }) => filter);
-  return models;
-};
-
-
 export const buildUrl = (
-  pageParam: number,
+  pageParam?: number,
   sortOption?: SortOption,
   filterOption?: FilterOption,
+  search?: string
 ): URL => {
   const url = new URL(API_ROOT);
 
@@ -53,13 +46,19 @@ export const buildUrl = (
   }
 
   if (sortOption) {
-    url.searchParams.append("sortBy", sortOption);
+    const order = sortOption[0] === "-" ? "desc" : "asc";
+    const sortBy = sortOption[0] === "-" ? sortOption.substring(1) : sortOption;
+    url.searchParams.append("sortBy", sortBy);
+    url.searchParams.append("order", order);
   }
-  
+
+  if (pageParam) {
+    url.searchParams.append("page", pageParam.toString());
+  }
   url.searchParams.append("limit", "12");
-  url.searchParams.append("page", pageParam.toString());
+  if (search) {
+    url.searchParams.append("search", search);
+  }
 
   return url;
 };
-
-

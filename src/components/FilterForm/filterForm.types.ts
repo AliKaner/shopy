@@ -1,4 +1,12 @@
-export interface IFilterForm {
+import { ChangeEvent } from "react";
+
+export type TOptionID = "brand" | "model";
+
+export interface IOptionForm {
   title: string;
-  filter: string;
+  options: string[];
+  checked: string[];
+  isLoading: boolean;
+  id: TOptionID;
+  onCheckedChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
