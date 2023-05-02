@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useMemo, useState } from "react";
+import { FC, useMemo, useState } from "react";
 import Box from "@mui/material/Box/Box";
 import FormControlLabel from "@mui/material/FormControlLabel/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox/Checkbox";
@@ -9,6 +9,8 @@ import TextField from "@mui/material/TextField/TextField";
 import { Skeleton } from "@mui/material";
 import { IOptionForm } from "./filterForm.types";
 import SearchIcon from "@mui/icons-material/Search";
+
+
 const OptionForm: FC<IOptionForm> = ({
   checked,
   title,

@@ -11,8 +11,7 @@ const ProductPagination: FC<IPagination> = ({ count, onChange }) => {
         variant="outlined"
         shape="rounded"
         onChange={onChange}
-        siblingCount={0}
-        boundaryCount={1}
+        siblingCount={1}
       />
     </>
   );

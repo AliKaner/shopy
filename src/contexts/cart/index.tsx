@@ -47,12 +47,6 @@ export const CartProvider: FC<ICartProvider> = ({ children }) => {
       const existingItem = cartItems.find(
         (cartItem) => cartItem.product.id === product.id
       );
-      console.log(
-        "ben salak bir functionum: ",
-        product,
-        existingItem,
-        cartItems
-      );
       const newCartItems = existingItem
         ? cartItems.map((cartItem) => {
             if (existingItem.id === cartItem.id) {
@@ -75,7 +69,7 @@ export const CartProvider: FC<ICartProvider> = ({ children }) => {
 
   const emptyCart = useCallback(() => {
     bulkUpdateCartItems([]);
-  }, [cartItems]);
+  }, []);
 
   const removeItemFromCart = useCallback(
     (productId: string) => {

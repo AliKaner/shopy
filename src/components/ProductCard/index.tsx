@@ -1,11 +1,9 @@
 import { IProductCard } from "./productCard.types";
 import { FC } from "react";
 import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Box, Button, CardActionArea, CardActions } from "@mui/material";
-import { blue } from "@mui/material/colors";
+import { Box, Button } from "@mui/material";
 import { useCart } from "../../contexts/cart";
 import { useNavigate } from "react-router-dom";
 

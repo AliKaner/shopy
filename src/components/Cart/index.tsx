@@ -1,5 +1,3 @@
-import { FC } from "react";
-import { ICart } from "./cart.types";
 import Box from "@mui/material/Box/Box";
 import IconButton from "@mui/material/IconButton/IconButton";
 import AddIcon from "@mui/icons-material/Add";
@@ -7,7 +5,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import { useCart } from "../../contexts/cart";
 import Typography from "@mui/material/Typography/Typography";
 
-const Cart: FC<ICart> = () => {
+export default function Cart() {
   const { addItemToCart } = useCart();
   const { removeItemFromCart } = useCart();
   const { cartItems } = useCart();
@@ -96,6 +94,4 @@ const Cart: FC<ICart> = () => {
       </Box>
     </Box>
   );
-};
-
-export default Cart;
+}

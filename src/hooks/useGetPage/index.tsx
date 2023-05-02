@@ -19,11 +19,11 @@ export const useGetPages = ({
   filterOption?: FilterOption;
   search?: string;
 }) => {
-  const { data, isLoading: cacheIsLoading } = useQuery<IProduct[]>(
+  const { data } = useQuery<IProduct[]>(
     [GET_PAGE_KEY, pageParam, sortOption, filterOption, search],
     () => getProducts(pageParam, sortOption, filterOption, search)
   );
 
-  const totalPagesCount=  Number(Math.ceil(Number(data?.length) / 12));
-  return {totalPagesCount}
+  const totalPagesCount = Number(Math.ceil(Number(data?.length) / 12));
+  return { totalPagesCount };
 };

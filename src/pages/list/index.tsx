@@ -1,12 +1,8 @@
-import { useState, useEffect, ChangeEvent, SetStateAction } from "react";
-import {
-  FilterOption,
-  SortOption,
-  getProducts,
-} from "../../api/routes/products";
+import { useState, ChangeEvent, SetStateAction } from "react";
+import { SortOption } from "../../api/routes/products";
 import { Layout } from "../../components/Layout";
 import ProductCard from "../../components/ProductCard";
-import { Box, Grid, Pagination, Skeleton } from "@mui/material";
+import { Box, Grid, Skeleton } from "@mui/material";
 import FilterForm from "../../components/FilterForm";
 import { SortRadio } from "../../components/SortRadio";
 import { useGetProducts } from "../../hooks/useGetItems";

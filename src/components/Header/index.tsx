@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { IHeader } from "./header.type";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -6,7 +6,6 @@ import Typography from "@mui/material/Typography";
 import Person2Icon from "@mui/icons-material/Person2";
 import WorkIcon from "@mui/icons-material/Work";
 import { useCart } from "../../contexts/cart";
-import { useNavigate } from "react-router";
 import SearchIcon from "@mui/icons-material/Search";
 import { TextField } from "@mui/material";
 
