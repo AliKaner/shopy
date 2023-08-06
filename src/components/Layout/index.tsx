@@ -11,7 +11,7 @@ export const Layout: FC<ILayout> = ({ children, onChange }) => {
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column" }}>
-      <Header title="eteration" onChange={onChange} />
+      <Header title="shopy" onChange={onChange} />
       <Box sx={{ display: "flex", flexDirection: "row", marginTop: "30px" }}>
         <Box sx={{ flex: 3 }}>{children}</Box>
         <Box
