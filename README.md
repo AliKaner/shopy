@@ -1,4 +1,4 @@
-# Eteration Case study
+# Shopy
 
 # How to run#
 
