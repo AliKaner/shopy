@@ -1,5 +1,5 @@
 # Shopy
-
+https://eterationcaseali.netlify.app/
 # How to run#
 
  ```
@@ -10,7 +10,3 @@ npm install
 npm start
 
 // Have fun 🚀
-```
-## Demo
-
-https://eterationcaseali.netlify.app/
